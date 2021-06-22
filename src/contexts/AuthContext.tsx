@@ -1,15 +1,24 @@
-import {createContext, useState, useEffect} from 'react'
-import {BrowserRouter, Route} from 'react-router-dom';
+import { createContext, ReactNode, useEffect, useState } from 'react';
+import { auth, firebase } from '../services/firebase';
 
-import { Home } from './pages/Home';
-import { NewRoom } from './pages/NewRoom';
-import {auth, firebase} from './services/firebase';
+type User ={
+  id: string;
+  name: string;
+  avatar: string;
+}
+type AuthContextType ={
+  user: User | undefined;
+  signInWithGoogle: () => Promise<void>;
+}
+
+type AuthContextProviderProps = {
+  children: ReactNode;
+}
+
+export const AuthContext = createContext({} as AuthContextType);
 
 
-
-
-
-function App() {
+export function AuthContextProvider(props){
   const [user, setUser] = useState<User>();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -50,13 +59,10 @@ function App() {
         })
       }
   }
-  return (
-    <BrowserRouter>
-        <Route path="/" exact component={Home} />
-        <Route path="/rooms/new" component={NewRoom} />
-    </BrowserRouter>
-
+  
+  return(
+    <AuthContext.Provider value={{user, signInWithGoogle}}>
+    {props.children}
+      </AuthContext.Provider>
   );
 }
-
-export default App;
