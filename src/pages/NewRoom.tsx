@@ -4,11 +4,12 @@ import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 import { Button } from '../components/Button';
 import '../styles/auth.scss';
+import { useAuth } from '../hooks/useAuth';
 //import { useContext } from 'react';
 //import { AuthContext } from '../contexts/AuthContext';
 
 export function NewRoom() {
- // const { user } = useContext(AuthContext);
+ // const { user } = useAuth();
   return(
     <div id="page-auth">
       <aside>
