@@ -1,0 +1,12 @@
+#page-auth {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+
+  aside {
+    flex: 7;
+  }
+  main {
+    flex: 8;
+  }
+}
