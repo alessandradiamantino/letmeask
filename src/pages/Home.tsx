@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom';
-import {auth, firebase} from '../services/firebase';
+import {auth, database, firebase} from '../services/firebase';
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
@@ -8,23 +8,43 @@ import { Button } from '../components/Button';
 
 import '../styles/auth.scss';
 import { useAuth } from '../hooks/useAuth';
+import { FormEvent, useState } from 'react';
 
 export function Home() {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth()
-
+  const [roomCode, setRoomCode] = useState('')
     async function handleCreateRoom(){
     if(!user){
       await signInWithGoogle();
     }
     history.push('/rooms/new');
   }
+
+  async function handleJoinRoom(event: FormEvent){
+    event.preventDefault();
+
+    if(roomCode.trim() === ''){
+      return;
+    }
+
+    const roomRef = await database.ref(`rooms/${roomCode}`).get();
+
+    if(!roomRef.exists()) {
+      alert('Essa sala não existe.');
+      return;
+    }
+
+    history.push(`/rooms/${roomCode}`);
+  }
+
   return(
     <div id="page-auth">
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas"/>
         <h1><strong>Toda pergunta tem uma resposta :D</strong></h1>
-      <p><h5>Tire as dúvidas da sua audiência em tempo real!</h5></p>
+      <p><h6>Tire as dúvidas da sua audiência em tempo real e tenha uma</h6></p>
+      <h4>iteração bacana com o pessoal!</h4>
       </aside>
       <main>
         <div className="main-content">
@@ -36,10 +56,12 @@ export function Home() {
             <div className="separator">
               ou entre em uma sala
             </div>
-            <form>
+            <form onSubmit={handleJoinRoom}>
               <input
               type="text"
               placeholder="Digite o código da sala"
+              onChange={event => setRoomCode(event.target.value)} 
+              value ={roomCode}
               />
               <Button type="submit">
                 Entrar na sala
