@@ -37,7 +37,7 @@
       h1 {
         font-family: 'Poppins', sans-serif;
         font-size:24px;
-        color: #29292e;
+        color: #ffffff;
       }
 
       span {
@@ -45,7 +45,7 @@
         background-color: #e559f9;
         border-radius: 9999px;
         padding: 8px 16px;
-        color: #fff;
+        color: #ffffff;
         font-weight: 500;
         font-size: 14px;
       }
@@ -57,9 +57,10 @@
         border: 0;
         padding: 16px;
         border-radius: 8px;
-        background: #fefefe;
+        background: #c3c3c3;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
         resize: vertical;
+        color: white;
         min-height: 130px;
       }
 
@@ -80,7 +81,7 @@
 
           span {
             margin-left: 8px;
-            color: #29292e;
+            color: #ffffff;
             font-weight: 500;
             font-size: 14px;
           }
@@ -88,13 +89,13 @@
 
         > span {
           font-size: 14px;
-          color: #737380;
+          color: #ffffff;
           font-weight: 500;
 
           button {
             background: transparent;
             border: 0;
-            color: #835afd;
+            color: #ae95fa;
             text-decoration: underline;
             font-size: 14px;
             cursor: pointer;
