@@ -7,13 +7,15 @@
   & + .question {
     margin-top: 8px;
   }
-  &.highlighted {
+    
+  & .highLighted {
+
     background: #f4f0ff;
     border: 1px solid #835afd;
     
   }
   
-  &.answered {
+  & .answered {
     background: #444343;
   }
 
