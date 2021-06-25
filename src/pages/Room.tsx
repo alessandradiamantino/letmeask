@@ -92,6 +92,8 @@ export function Room(){
               key = {question.id}
               content = {question.content}
               author = {question.author}
+              isAnswered={question.isAnswered}
+              isHighLigted={question.isHighLigted}
             >
 
             <button
