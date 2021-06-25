@@ -19,7 +19,7 @@ type FirebaseQuestions = Record<string, {
   }
   content: string;
   isAnswered: boolean;
-  isHighLighted: boolean;
+  ishighLighted: boolean;
 } >
 
 type RoomParams = {

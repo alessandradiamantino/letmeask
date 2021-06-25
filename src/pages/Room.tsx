@@ -19,7 +19,7 @@ type FirebaseQuestions = Record<string, {
   }
   content: string;
   isAnswered: boolean;
-  isHighLighted: boolean;
+  ishighLighted: boolean;
 } >
 
 type QuestionType = {
@@ -30,7 +30,7 @@ type QuestionType = {
   }
   content: string;
   isAnswered: boolean;
-  isHighLighted: boolean;
+  ishighLighted: boolean;
 
 }
 
@@ -58,7 +58,7 @@ export function Room(){
           id: key,
           content: value.content,
           author: value.author,
-          isHighLighted: value.isHighLighted,
+          ishighLighted: value.ishighLighted,
           isAnswered: value.isAnswered,
         }
       })
@@ -77,7 +77,7 @@ export function Room(){
         name: user.name,
         avatar: user.avatar,
       },
-      isHighLighted: false,
+      ishighLighted: false,
       isAnswered: false
     };
 
