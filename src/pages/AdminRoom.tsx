@@ -103,6 +103,7 @@ export function AdminRoom(){
         <img src={answer} alt="Dar destaque a pergunta" />
       </button>
     </>
+    
   )}
 
   <button
@@ -111,6 +112,7 @@ export function AdminRoom(){
   >
     <img src={deleteImg} alt="Remover pergunta" />
   </button>
+
 </Question>
           );
         })}
